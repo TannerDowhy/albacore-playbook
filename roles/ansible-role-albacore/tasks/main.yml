@@ -1,4 +1,23 @@
 ---
 # tasks file for ansible-role-albacore
 
-- name: Execute container script
+- name: Pull Singularity Container to Project Directory
+  command: singularity pull shub://TannerDowhy/albacore-playbook:latest
+  args:
+    chdir: "{{ project_dir }}"
+
+- name: - name: Create output directories
+  file: path={{ project_dir }} state=directory mode=0777
+  with_items:
+    - output
+    - slurm_out
+
+- name: Copy scripts to target machine
+  copy: src="{{ role_path }}/files/{{ item }}" dest="{{ project_dir }}"
+  with_items:
+    - submit.sh
+
+- name: Submit jobs to the cluster
+  command: "sh submit.sh {{ data }} {{ project_dir }} {{ threads }} {{ flowcell }} {{ kit }} {{ demult }} {{ qname }}"
+  args: 
+    chdir: "{{ project_dir }}"
