@@ -26,7 +26,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     echo "deb-src http://security.ubuntu.com/ubuntu xenial-security universe" | tee -a /etc/apt/sources.list
 
     apt-get -y update
-    apt-get -y upgrade
 
     apt-get -y install wget apt-transport-https python3 libboost-dev python3-pip python3-numpy python3-h5py
 
