@@ -7,7 +7,7 @@
     chdir: "{{ project_dir }}"
 
 - name: Create output directories
-  file: path={{ project_dir }} state=directory mode=0777
+  file: path="{{ project_dir }}" state=directory mode=0777
   with_items:
     - output
     - slurm_out
