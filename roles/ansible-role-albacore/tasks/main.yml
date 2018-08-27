@@ -16,6 +16,7 @@
   copy: src="{{ role_path }}/files/{{ item }}" dest="{{ project_dir }}"
   with_items:
     - submit.sh
+    - basecall.sh
 
 - name: Submit jobs to the cluster
   command: "sh submit.sh {{ data }} {{ project_dir }} {{ threads }} {{ flowcell }} {{ kit }} {{ demult }} {{ qname }}"
