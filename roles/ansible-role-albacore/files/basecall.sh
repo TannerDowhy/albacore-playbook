@@ -2,7 +2,7 @@
 
 #SBATCH --time=1:00:00
 #SBATCH --job-name=basecalling
-#SBATCH --mem=4G
+#SBATCH --mem=12G
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=32
 
